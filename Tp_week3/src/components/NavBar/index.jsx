@@ -1,18 +1,24 @@
 import {NavLink} from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
   
+  const user = useSelector((state) => state.user);
+
   return (
-    <nav >
-      <ul style={{listStyle: 'none'}}>
+    <nav>
+      <div>
+        <NavLink className={'home'} to={'/'}>EZ Shopping</NavLink>
+      </div>
+      <ul>
         <li>
-          <NavLink to={'/'}>Accueil</NavLink>
+          <NavLink className={'basket'} to={'/cart'}>Panier</NavLink>
         </li>
         <li>
-          <NavLink to={'/cart'}>Panier</NavLink>
+          <NavLink className={'profile'} to={'/profile'}>{user.firstname} {user.lastname} </NavLink>
         </li>
         <li>
-          <NavLink to={'/user'}>Utilisateur</NavLink>
+          <NavLink to={'/'}>Dark Mode</NavLink>
         </li>
       </ul>
     </nav>
